@@ -1,5 +1,6 @@
 {
     "name": "apeschar/php-cs-fixer",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "Kibo\\PhpCsFixer\\": "src"
