@@ -2,19 +2,18 @@
 namespace Kibo\PhpCsFixer;
 
 use IteratorAggregate;
-use Symfony\Component\Process\Process;
-use Symfony\Component\Process\Exception\ProcessFailedException;
 use SplFileInfo;
+use Symfony\Component\Process\Exception\ProcessFailedException;
+use Symfony\Component\Process\Process;
 
-class GitFinder implements IteratorAggregate
-{
+class GitFinder implements IteratorAggregate {
     private $root;
-    public function __construct(string $root)
-    {
+
+    public function __construct(string $root) {
         $this->root = $root;
     }
-    public function getIterator()
-    {
+
+    public function getIterator() {
         $proc = new Process(['git', 'ls-files', '*.php'], $this->root);
         $proc->start();
         foreach ($this->getLines($proc->getIterator(Process::ITER_SKIP_ERR)) as $line) {
@@ -24,8 +23,8 @@ class GitFinder implements IteratorAggregate
             throw new ProcessFailedException($proc);
         }
     }
-    private function getLines(\Generator $generator): \Generator
-    {
+
+    private function getLines(\Generator $generator): \Generator {
         $buffer = '';
         foreach ($generator as $chunk) {
             $buffer .= $chunk;
