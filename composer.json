@@ -1,0 +1,8 @@
+{
+    "name": "kiboit/php-cs-fixer",
+    "autoload": {
+        "psr-4": {
+            "Kibo\\PhpCsFixer\\": "src"
+        }
+    }
+}

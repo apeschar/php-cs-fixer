@@ -1,0 +1,10 @@
+<?php
+use Kibo\PhpCsFixer\Config;
+
+if (!class_exists(Config::class)) {
+    require_once __DIR__ . '/vendor/autoload.php';
+}
+
+return Config::create(__DIR__);
+
+# vim: set ft=php :
