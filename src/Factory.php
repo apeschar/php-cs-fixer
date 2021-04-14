@@ -1,10 +1,18 @@
 <?php
 namespace Kibo\PhpCsFixer;
 
-class Config {
-    public static function create(string $root): \PhpCsFixer\Config {
-        $config = new \PhpCsFixer\Config();
-        $config->setFinder(self::createFinder($root));
+use PhpCsFixer\Config;
+
+class Factory {
+    private $finder;
+
+    public function __construct(string $root) {
+        $this->finder = new GitFinder($root);
+    }
+
+    public function config(): Config {
+        $config = new Config();
+        $config->setFinder($this->finder);
         $config->setRules([
             '@PSR1' => true,
             '@PSR2' => true,
@@ -33,7 +41,9 @@ class Config {
         return $config;
     }
 
-    public static function createFinder(string $root): \Traversable {
-        return new GitFinder($root);
+    public function exclude(string $pathComponent): self {
+        $next = clone $this;
+        $next->finder = new PathComponentExclusionFilter($pathComponent, $this->finder);
+        return $next;
     }
 }
