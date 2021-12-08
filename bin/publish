@@ -3,4 +3,4 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-git push git@github.com:apeschar/php-cs-fixer HEAD --tags
+git push git@github.com:apeschar/php-cs-fixer master csfixer2  --tags
