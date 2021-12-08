@@ -16,7 +16,6 @@ class Factory {
         $config->setRules([
             '@PSR1' => true,
             '@PSR2' => true,
-            'array_syntax' => ['syntax' => 'short'],
             'braces' => ['position_after_functions_and_oop_constructs' => 'same'],
             'cast_spaces' => true,
             'class_attributes_separation' => true,
@@ -35,7 +34,7 @@ class Factory {
             'return_type_declaration' => true,
             'single_quote' => true,
             'ternary_to_null_coalescing' => true,
-            'trailing_comma_in_multiline_array' => true,
+            'trailing_comma_in_multiline' => true,
             'trim_array_spaces' => true,
         ]);
         return $config;
