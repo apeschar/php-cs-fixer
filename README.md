@@ -13,9 +13,9 @@ Install the package in your project:
 
     composer require --dev apeschar/php-cs-fixer
 
-Copy the `.php_cs.dist` shim with loads the configuration:
+Copy the `.php-cs-fixer.dist.php` configuration file:
 
-    cp vendor/apeschar/php-cs-fixer/.php_cs.dist .
+    cp vendor/apeschar/php-cs-fixer/.php-cs-fixer.dist.php .
 
 Run `php-cs-fixer`:
 
