@@ -6,5 +6,3 @@ if (!class_exists(Factory::class)) {
 }
 
 return (new Factory(__DIR__))->config();
-
-# vim: set ft=php :

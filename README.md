@@ -9,14 +9,20 @@ versioned.
 
 ## Installation
 
-Install the package in your project:
+Install PHP-CS-Fixer and this package in a subdirectory of your project:
 
-    composer require --dev apeschar/php-cs-fixer
+    mkdir -p tools/php-cs-fixer
+    composer --working-dir=tools/php-cs-fixer \
+        require friendsofphp/php-cs-fixer apeschar/php-cs-fixer
 
-Copy the `.php-cs-fixer.dist.php` configuration file:
+Initialize the `.php-cs-fixer.dist.php`:
 
-    cp vendor/apeschar/php-cs-fixer/.php-cs-fixer.dist.php .
+    cat > .php-cs-fixer.dist.php <<EOF
+    <?php
+    use Kibo\PhpCsFixer\Factory;
+    return (new Factory(__DIR__))->config();
+    EOF
 
 Run `php-cs-fixer`:
 
-    php-cs-fixer fix
+    tools/php-cs-fixer/vendor/bin/php-cs-fixer fix
